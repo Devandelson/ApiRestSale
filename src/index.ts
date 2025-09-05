@@ -22,8 +22,8 @@ const limiter = rateLimit({
 const app = express();
 app.use(cors({
   origin: "http://localhost:5173",
-  methods: ["GET", "POST", "OPTIONS"], // métodos permitidos
-  allowedHeaders: ["Content-Type", "passGet"] // headers que vas a usar
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "passget", "Authorization"] // ✅ agrega Authorization
 }));
 
 app.use(helmet());
