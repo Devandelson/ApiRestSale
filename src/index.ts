@@ -36,7 +36,7 @@ app.listen(app.get('port'), () => {
 
 // generateToken
 app.get('/GetToken', async (req: Request, res: Response) => {
-    const customParam = req.headers["passGet"];
+    const customParam = req.headers["passget"];
     if (customParam == '$2y$06$k6g.jmkN8MYo9cqfgmnSaOXhKxoB7tSe2E0/1rRxHQuTEEBLyHS3W') {
       if (tokenValid.length < 1) {
           const payloadID = process.env.payloadID;
