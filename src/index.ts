@@ -20,7 +20,12 @@ const limiter = rateLimit({
 });
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173",
+  methods: ["GET", "POST", "OPTIONS"], // métodos permitidos
+  allowedHeaders: ["Content-Type", "passGet"] // headers que vas a usar
+}));
+
 app.use(helmet());
 app.use(limiter);
 app.use(express.json());
