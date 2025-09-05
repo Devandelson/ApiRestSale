@@ -1,4 +1,4 @@
-import conex from "../config/db.js";
+import conex from "../config/db";
 
 interface empleado {
     idUser: number;
