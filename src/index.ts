@@ -36,34 +36,37 @@ app.listen(app.get('port'), () => {
 
 // generateToken
 app.get('/GetToken', async (req: Request, res: Response) => {
-    if (tokenValid.length < 1) {
-        const payloadID = process.env.payloadID;
-        const payloadname = process.env.payloadname;
-        const payloadPassword = process.env.payloadPassword;
-        
-        const payload = { id: payloadID, name: payloadname, password: payloadPassword};
-
-        const secret: string = process.env.JWT_SECRET as string;
-
-        const options: Jwt.SignOptions = { expiresIn: '20s' };
-        const newAccessToken = Jwt.sign(payload, secret, options);
-
-        const options2: Jwt.SignOptions = { expiresIn: '1h' };
-        const newRefreshToken = Jwt.sign(payload, secret, options2);
-
-        tokenValid.push(newAccessToken, newRefreshToken);
-
-        res.json({ AccessToken: newAccessToken });
-        return console.log(newAccessToken, ' - ', newRefreshToken);
-    } else {
-        try {
-            Jwt.verify( tokenValid[0], process.env.JWT_SECRET as string) as JwtPayload;
-            res.json({ AccessToken: tokenValid[0] });
-        } catch {
-            await refreshTokens();
-            res.json({ AccessToken: tokenValid[0] });
-        }
-    }
+    const customParam = req.headers["passGet"];
+    if (customParam == '$2y$06$k6g.jmkN8MYo9cqfgmnSaOXhKxoB7tSe2E0/1rRxHQuTEEBLyHS3W') {
+      if (tokenValid.length < 1) {
+          const payloadID = process.env.payloadID;
+          const payloadname = process.env.payloadname;
+          const payloadPassword = process.env.payloadPassword;
+          
+          const payload = { id: payloadID, name: payloadname, password: payloadPassword};
+  
+          const secret: string = process.env.JWT_SECRET as string;
+  
+          const options: Jwt.SignOptions = { expiresIn: '15m' };
+          const newAccessToken = Jwt.sign(payload, secret, options);
+  
+          const options2: Jwt.SignOptions = { expiresIn: '1h' };
+          const newRefreshToken = Jwt.sign(payload, secret, options2);
+  
+          tokenValid.push(newAccessToken, newRefreshToken);
+  
+          res.json({ AccessToken: newAccessToken });
+          return console.log(newAccessToken, ' - ', newRefreshToken);
+      } else {
+          try {
+              Jwt.verify( tokenValid[0], process.env.JWT_SECRET as string) as JwtPayload;
+              res.json({ AccessToken: tokenValid[0] });
+          } catch {
+              await refreshTokens();
+              res.json({ AccessToken: tokenValid[0] });
+          }
+      }
+    } else { res.json({ message: 'No tienes acceso' }); }
 });
 
 // conectando a la base de datos
