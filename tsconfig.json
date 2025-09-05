@@ -1,17 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ESNext", // versión de JS de salida
-    "module": "ES2020", // módulo compatible con Node
-    "rootDir": "src", // carpeta de entrada
-    "outDir": "dist", // carpeta de salida
-    "esModuleInterop": true, // compatibilidad con import/export
-    "strict": true, // buenas prácticas
+    "target": "ES2020",
+    "module": "ESNext",
     "moduleResolution": "Node",
+    "outDir": "dist",
+    "rootDir": "src",
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "strict": true,
     "skipLibCheck": true
   },
   "include": ["src"],
- "exclude": [
-    "node_modules",
-  ]
+  "exclude": ["node_modules"]
 }
