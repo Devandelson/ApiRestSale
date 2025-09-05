@@ -29,9 +29,6 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
-// Permitir preflight requests
-app.options('*', cors());
-
 app.set('port', process.env.PORT || 3000);
 
 const prefijo = '/api';
