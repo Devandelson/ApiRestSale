@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ESNext", // versión de JS de salida
-    "module": "ES2020", // módulo compatible con Node
-    "rootDir": "src", // carpeta de entrada
-    "outDir": "dist", // carpeta de salida
-    "esModuleInterop": true, // compatibilidad con import/export
-    "strict": true, // buenas prácticas
-    "moduleResolution": "Node",
+    "target": "ES2020",                // buena compatibilidad
+    "module": "NodeNext",              // soporte ESM en Node
+    "moduleResolution": "NodeNext",    // resolución de módulos estilo Node
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "esModuleInterop": true,           // permite importar CJS como ESM
+    "allowJs": true,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "outDir": "dist"
   },
-  "include": ["src"],
- "exclude": [
-    "node_modules",
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
