@@ -23,7 +23,7 @@ const app = express();
 app.use(cors({
   origin: ["http://localhost:5173" , "https://devDevandelson.github.io/"],
   methods: ["GET", "POST", "OPTIONS", "DELETE", "PUT"],
-  allowedHeaders: ["Content-Type", "passGet", "Authorization"] // ✅ agrega Authorization
+  allowedHeaders: ["Content-Type", "passget", "Authorization"] // ✅ agrega Authorization
 }));
 
 app.use(helmet());
