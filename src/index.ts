@@ -15,7 +15,7 @@ const tokenValid: Array<string> = [];
 
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minuto
-  max: 10, // máximo de 10 peticiones por IP
+  max: 50, // máximo de 10 peticiones por IP
   message: "Demasiadas solicitudes desde esta IP, inténtalo en un minuto."
 });
 
