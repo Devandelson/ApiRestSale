@@ -21,7 +21,7 @@ const limiter = rateLimit({
 
 const app = express();
 app.use(cors({
-  origin: ["http://localhost:5173" , "https://devandelson.github.io/WorkTrack/"],
+  origin: ["https://devandelson.github.io", "http://localhost:5173"],
   methods: ["GET", "POST", "OPTIONS", "DELETE", "PUT"],
   allowedHeaders: ["Content-Type", "passget", "Authorization"] // ✅ agrega Authorization
 }));
